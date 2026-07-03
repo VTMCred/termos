@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="selection:bg-[#3054ff]/30">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VTMCred - Termos e Condições</title>
   
-  <!-- Import Google Fonts -->
+  <!-- Tailwind CSS Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
@@ -13,115 +16,189 @@
   <!-- HLS.js CDN for live video streaming support across all browsers -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
   
-  <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'europa-grotesk-bold': ['"Europa Grotesk SH Bold"', '"Europa Grotesk SH DemBol"', '"Instrument Sans"', 'sans-serif'],
+            'instrument-sans': ['"Instrument Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .animate-fade-in {
+        animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Smooth Scroll and hide scrollbars */
+    html, body {
+      background-color: #000000;
+      color: #ffffff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.2);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+  </style>
 </head>
-<body>
-  <!-- ======================================================= -->
-  <!-- SCREEN 1: HERO LANDING PAGE                             -->
-  <!-- ======================================================= -->
-  <div id="hero-screen" class="screen active">
-    <!-- Fullscreen Video Background -->
-    <div class="video-container">
-      <video id="hero-video" loop muted playsinline autoplay></video>
-      <div class="video-overlay"></div>
-    </div>
-
-    <!-- Hero Content -->
-    <div class="hero-layout">
-      <!-- Header -->
-      <header class="hero-header">
-        <h2 class="brand-logo">VTMCred.</h2>
-      </header>
-
-      <!-- Main Center Content -->
-      <main class="hero-main">
-        <div class="hero-badge">Crédito Digital</div>
-        <h1 class="hero-title">Seu crédito inteligente, simples e digital.</h1>
-        <p class="hero-subtitle">Termos, condições<br>e políticas da operação.</p>
-        
-        <!-- Liquid Glass CTA Button -->
-        <button id="hero-cta-btn" class="glass-btn">
-          <span class="btn-shine"></span>
-          Conhecer termos
+<body class="font-instrument-sans antialiased bg-black min-h-screen relative w-full overflow-x-hidden">
+  <div id="app-root" class="min-h-screen bg-black relative w-full overflow-x-hidden">
+    
+    <!-- ======================================================= -->
+    <!-- SCREEN 1: HERO LANDING PAGE                             -->
+    <!-- ======================================================= -->
+    <section id="hero-section" class="relative w-full min-h-screen bg-[#000000] text-white overflow-hidden flex flex-col items-center justify-between pt-24 sm:pt-32 pb-24 sm:pb-36 transition-all duration-500">
+      
+      <!-- Live Video Background -->
+      <video id="hero-video" class="absolute inset-0 w-full h-full object-cover opacity-60" muted loop playsinline autoplay poster="https://images.unsplash.com/photo-1647356191320-d7a1f80ca777?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGRhcmslMjB0ZWNobm9sb2d5JTIwbmV1cmFsJTIwbmV0d29ya3xlbnwxfHx8fDE3Njg5NzIyNTV8MA&ixlib=rb-4.1.0&q=80&w=1080"></video>
+      
+      <!-- Video Overlay -->
+      <div id="video-overlay" class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+      
+      <!-- Ambient Glows -->
+      <div id="gradient-top-left" class="absolute top-[-20%] left-[20%] w-[600px] h-[600px] bg-blue-900/20 blur-[120px] mix-blend-screen pointer-events-none rounded-full"></div>
+      <div id="gradient-bottom-right" class="absolute bottom-[-10%] right-[20%] w-[500px] h-[500px] bg-indigo-900/20 blur-[120px] mix-blend-screen pointer-events-none rounded-full"></div>
+      
+      <!-- Hero Content -->
+      <div id="hero-content-container" class="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center text-center">
+        <h1 id="hero-title" class="font-europa-grotesk-bold font-bold text-6xl sm:text-8xl lg:text-[136px] leading-[0.9] tracking-tighter bg-gradient-to-b from-white via-white to-[#b4c0ff] bg-clip-text text-transparent animate-fade-in">VTMCred.</h1>
+        <p id="hero-subtitle" class="font-instrument-sans text-white/75 text-base sm:text-lg mt-3 max-w-md mx-auto text-left w-full">Termos, condições <br>e políticas da operação.</p>
+      </div>
+      
+      <!-- Hero CTA Actions -->
+      <div id="hero-action-container" class="relative z-10 w-full flex justify-center px-6">
+        <button id="hero-cta-terms" class="relative group overflow-hidden px-10 py-4 rounded-full border border-white/15 bg-white/5 text-white font-instrument-sans font-medium text-lg tracking-wide shadow-[0_12px_40px_0_rgba(0,0,0,0.5)] backdrop-blur-xl transition-all duration-500 hover:border-white/35 hover:bg-white/10 hover:shadow-[0_12px_40px_rgba(48,84,255,0.3)] hover:scale-105 active:scale-98 cursor-pointer flex items-center justify-center">
+          <!-- Glossy / Glass Reflection Divs -->
+          <div class="absolute top-0 inset-x-0 h-[48%] bg-gradient-to-b from-white/20 via-white/5 to-transparent rounded-t-full pointer-events-none transition-all duration-500 group-hover:from-white/30 group-hover:via-white/10"></div>
+          <div class="absolute bottom-0 inset-x-4 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"></div>
+          <div class="absolute -inset-px rounded-full bg-gradient-to-r from-blue-500/20 via-[#3054ff]/30 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md pointer-events-none"></div>
+          
+          <span class="relative z-10 text-white/90 group-hover:text-white transition-colors duration-300">Conhecer termos</span>
         </button>
-      </main>
-    </div>
-  </div>
+      </div>
+      
+    </section>
 
-  <!-- ======================================================= -->
-  <!-- SCREEN 2: TERMS ONBOARDING PAGE                         -->
-  <!-- ======================================================= -->
-  <div id="terms-screen" class="screen">
-    <div class="terms-container">
-      <!-- Decorative background ambient glows -->
-      <div class="bg-glow"></div>
-
-      <!-- Header (Only Logo) -->
-      <header class="terms-header">
-        <h2 class="logo-text">VTMCred.</h2>
-      </header>
-
-      <!-- Main White Onboarding Card -->
-      <main id="terms-onboarding-card" class="onboarding-card">
-        <!-- Onboarding Header & Linear Progress -->
-        <div class="card-header">
-          <div class="header-info">
-            <span class="category-tag">Termos e Condições</span>
-            <span id="step-indicator" class="step-badge">1 de 6</span>
+    <!-- ======================================================= -->
+    <!-- SCREEN 2: TERMS ONBOARDING PAGE                         -->
+    <!-- ======================================================= -->
+    <div id="terms-page-container" class="hidden absolute top-0 left-0 w-full min-h-screen bg-gradient-to-b from-[#06174A] via-[#040f33] to-[#02071d] text-white flex flex-col items-center justify-start pt-12 pb-8 px-4 sm:px-6 font-instrument-sans select-none overflow-x-hidden transition-all duration-500 transform translate-y-12 opacity-0">
+      
+      <!-- Top Center Glow -->
+      <div id="terms-glow-top-center" class="absolute top-[-10%] left-[50%] -translate-x-1/2 w-[600px] h-[300px] bg-blue-500/10 blur-[120px] mix-blend-screen pointer-events-none rounded-full"></div>
+      
+      <!-- Logo Header -->
+      <div id="terms-header-logo" class="relative z-10 flex flex-col items-center text-center mb-8">
+        <h2 id="terms-logo-text" class="font-europa-grotesk-bold font-bold text-4xl sm:text-5xl tracking-tighter bg-gradient-to-b from-white via-white to-[#b4c0ff] bg-clip-text text-transparent">VTMCred.</h2>
+      </div>
+      
+      <!-- Onboarding Main Card -->
+      <div id="terms-onboarding-card" class="relative z-10 w-full max-w-[620px] bg-white text-slate-900 rounded-[24px] shadow-[0_24px_60px_rgba(0,0,0,0.45)] p-6 sm:p-8 flex flex-col justify-between min-h-[380px] mb-6 overflow-hidden transition-all duration-300">
+        
+        <!-- Header -->
+        <div id="terms-card-header" class="w-full mb-6">
+          <div class="flex justify-between items-center mb-3">
+            <span class="font-instrument-sans text-xs font-bold uppercase tracking-wider text-slate-400">Termos e Condições</span>
+            <span id="step-indicator" class="font-instrument-sans text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-full">1 de 6</span>
           </div>
-          <div class="progress-container">
-            <div id="terms-progress-bar-fill" class="progress-bar-fill" style="width: 16.66%;"></div>
+          <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+            <div id="terms-progress-bar-fill" class="h-full bg-[#06174A] transition-all duration-300 ease-out" style="width: 16.66%;"></div>
           </div>
         </div>
-
+        
         <!-- Content Area -->
-        <div id="terms-card-content" class="card-content">
-          <!-- Icon Badge -->
-          <div id="step-icon-badge" class="icon-badge"></div>
-
-          <!-- Step Title -->
-          <h1 id="terms-step-title" class="step-title"></h1>
-
-          <!-- Step Content -->
-          <p id="terms-step-body" class="step-body"></p>
-
-          <!-- Light Blue alert message (only on final step) -->
-          <div id="terms-final-alert" class="final-alert hidden">
-            <svg class="info-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <p class="alert-text">
-              Este documento possui caráter informativo e estabelece as condições gerais utilizadas pela VTMCred em suas operações. A formalização definitiva ocorrerá mediante contrato específico.
-            </p>
+        <div id="terms-card-content-area" class="w-full flex-grow flex flex-col justify-center min-h-[180px] overflow-hidden py-1 transition-all duration-200">
+          <div id="terms-card-inner" class="w-full flex flex-col items-center text-center px-1 transition-all duration-200">
+            
+            <!-- Icon Badge -->
+            <div id="terms-icon-wrapper" class="relative mb-5 flex items-center justify-center">
+              <div class="absolute inset-0 bg-blue-50 rounded-2xl blur-sm opacity-80"></div>
+              <div id="terms-icon-container" class="relative p-4 rounded-2xl bg-blue-50 text-[#06174A] flex items-center justify-center">
+                <!-- Icon will be injected here -->
+              </div>
+            </div>
+            
+            <!-- Step Title -->
+            <h1 id="terms-step-title" class="font-instrument-sans text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight mb-3"></h1>
+            
+            <!-- Step Body -->
+            <p id="terms-step-body" class="font-instrument-sans text-slate-600 text-sm sm:text-base leading-relaxed max-w-md mx-auto"></p>
+            
+            <!-- Light Blue Alert for Final Step -->
+            <div id="terms-final-alert" class="hidden mt-5 p-4 rounded-xl bg-sky-50 border border-sky-100 text-sky-950 text-left flex gap-3 items-start w-full max-w-md">
+              <svg class="w-4 h-4 text-sky-600 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4"></path>
+                <path d="M12 8h.01"></path>
+              </svg>
+              <p class="font-instrument-sans text-[11px] sm:text-xs leading-relaxed">Este documento possui caráter informativo e estabelece as condições gerais utilizadas pela VTMCred em suas operações. A formalização definitiva ocorrerá mediante contrato específico.</p>
+            </div>
+            
           </div>
         </div>
-
-        <!-- Checkbox -->
-        <div class="checkbox-area">
-          <label id="terms-custom-checkbox-wrapper" class="checkbox-wrapper">
-            <div class="checkbox-relative">
+        
+        <!-- Checkbox Area -->
+        <div id="terms-checkbox-area" class="w-full border-t border-slate-100 pt-5 mt-5">
+          <label id="terms-custom-checkbox-wrapper" class="flex items-center justify-center gap-3 py-2.5 px-4 rounded-xl border transition-all duration-300 cursor-pointer select-none border-slate-200 hover:border-slate-300 text-slate-500">
+            <div class="relative flex items-center justify-center">
               <input type="checkbox" id="terms-step-checkbox" class="sr-only">
-              <div id="checkbox-visual" class="checkbox-visual">
-                <svg class="check-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="4">
+              <div id="checkbox-visual" class="w-5 h-5 rounded-md border flex items-center justify-center transition-all duration-300 border-slate-300 bg-white">
+                <svg id="checkbox-check-icon" class="hidden w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="4">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               </div>
             </div>
-            <span class="checkbox-label">Li e compreendi este tópico.</span>
+            <span class="font-instrument-sans text-xs sm:text-sm">Li e compreendi este tópico.</span>
           </label>
         </div>
-      </main>
-
-      <!-- Bottom Button Actions -->
-      <div class="action-container">
-        <button id="terms-action-btn" class="action-btn" disabled>
-          <span id="btn-text">Próximo</span>
-          <svg id="btn-icon" class="btn-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        
+      </div>
+      
+      <!-- Onboarding Action Buttons -->
+      <div id="terms-onboarding-actions" class="w-full max-w-[620px] px-1">
+        <!-- Next Button -->
+        <button id="terms-action-next-btn" class="w-full py-3.5 rounded-full font-instrument-sans font-semibold text-base shadow-md transition-all duration-300 flex items-center justify-center gap-2 bg-white/10 text-white/30 border border-white/5 cursor-not-allowed" disabled>
+          <span>Próximo</span>
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 18 6-6-6-6"></path>
           </svg>
         </button>
+        
+        <!-- Confirm All Button (starts hidden) -->
+        <button id="terms-action-confirm-all-btn" class="hidden w-full py-3.5 rounded-full font-instrument-sans font-semibold text-base shadow-lg transition-all duration-300 flex items-center justify-center gap-2 bg-white/10 text-white/30 border border-white/5 cursor-not-allowed" disabled>
+          Concordo com todos os termos
+        </button>
       </div>
+      
     </div>
   </div>
 
