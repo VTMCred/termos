@@ -1,0 +1,6 @@
+{
+  "name": "AI Website Builder Hero",
+  "description": "A dark mode hero section for an AI website builder with live video stream background and custom typography.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

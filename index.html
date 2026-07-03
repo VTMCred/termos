@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VTMCred - Termos e Condições</title>
+  
+  <!-- Import Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  
+  <!-- HLS.js CDN for live video streaming support across all browsers -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ======================================================= -->
+  <!-- SCREEN 1: HERO LANDING PAGE                             -->
+  <!-- ======================================================= -->
+  <div id="hero-screen" class="screen active">
+    <!-- Fullscreen Video Background -->
+    <div class="video-container">
+      <video id="hero-video" loop muted playsinline autoplay></video>
+      <div class="video-overlay"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-layout">
+      <!-- Header -->
+      <header class="hero-header">
+        <h2 class="brand-logo">VTMCred.</h2>
+      </header>
+
+      <!-- Main Center Content -->
+      <main class="hero-main">
+        <div class="hero-badge">Crédito Digital</div>
+        <h1 class="hero-title">Seu crédito inteligente, simples e digital.</h1>
+        <p class="hero-subtitle">Termos, condições<br>e políticas da operação.</p>
+        
+        <!-- Liquid Glass CTA Button -->
+        <button id="hero-cta-btn" class="glass-btn">
+          <span class="btn-shine"></span>
+          Conhecer termos
+        </button>
+      </main>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- SCREEN 2: TERMS ONBOARDING PAGE                         -->
+  <!-- ======================================================= -->
+  <div id="terms-screen" class="screen">
+    <div class="terms-container">
+      <!-- Decorative background ambient glows -->
+      <div class="bg-glow"></div>
+
+      <!-- Header (Only Logo) -->
+      <header class="terms-header">
+        <h2 class="logo-text">VTMCred.</h2>
+      </header>
+
+      <!-- Main White Onboarding Card -->
+      <main id="terms-onboarding-card" class="onboarding-card">
+        <!-- Onboarding Header & Linear Progress -->
+        <div class="card-header">
+          <div class="header-info">
+            <span class="category-tag">Termos e Condições</span>
+            <span id="step-indicator" class="step-badge">1 de 6</span>
+          </div>
+          <div class="progress-container">
+            <div id="terms-progress-bar-fill" class="progress-bar-fill" style="width: 16.66%;"></div>
+          </div>
+        </div>
+
+        <!-- Content Area -->
+        <div id="terms-card-content" class="card-content">
+          <!-- Icon Badge -->
+          <div id="step-icon-badge" class="icon-badge"></div>
+
+          <!-- Step Title -->
+          <h1 id="terms-step-title" class="step-title"></h1>
+
+          <!-- Step Content -->
+          <p id="terms-step-body" class="step-body"></p>
+
+          <!-- Light Blue alert message (only on final step) -->
+          <div id="terms-final-alert" class="final-alert hidden">
+            <svg class="info-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p class="alert-text">
+              Este documento possui caráter informativo e estabelece as condições gerais utilizadas pela VTMCred em suas operações. A formalização definitiva ocorrerá mediante contrato específico.
+            </p>
+          </div>
+        </div>
+
+        <!-- Checkbox -->
+        <div class="checkbox-area">
+          <label id="terms-custom-checkbox-wrapper" class="checkbox-wrapper">
+            <div class="checkbox-relative">
+              <input type="checkbox" id="terms-step-checkbox" class="sr-only">
+              <div id="checkbox-visual" class="checkbox-visual">
+                <svg class="check-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+            </div>
+            <span class="checkbox-label">Li e compreendi este tópico.</span>
+          </label>
+        </div>
+      </main>
+
+      <!-- Bottom Button Actions -->
+      <div class="action-container">
+        <button id="terms-action-btn" class="action-btn" disabled>
+          <span id="btn-text">Próximo</span>
+          <svg id="btn-icon" class="btn-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom JS Script -->
+  <script src="script.js" defer></script>
+</body>
+</html>
